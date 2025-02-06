@@ -1,7 +1,7 @@
 """
 Modern vendor-specific WPS PIN generation algorithms (2023-2025 models)
 """
-from src.utils.network import NetworkAddress
+from ..utils.network import NetworkAddress
 
 class ModernVendorPins:
     @staticmethod

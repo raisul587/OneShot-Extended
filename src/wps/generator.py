@@ -1,73 +1,8 @@
-class NetworkAddress:
-    """Handles MAC addresses"""
-
-    def __init__(self, mac):
-        if isinstance(mac, int):
-            self._INT_REPR = mac
-            self._STR_REPR = self._int2mac(mac)
-        elif isinstance(mac, str):
-            self._STR_REPR = mac.replace('-', ':').replace('.', ':').upper()
-            self._INT_REPR = self._mac2int(mac)
-
-    @staticmethod
-    def _mac2int(mac) -> int:
-        """Converts MAC address to integer"""
-        return int(mac.replace(':', ''), 16)
-
-    @staticmethod
-    def _int2mac(mac) -> str:
-        """Converts integer to MAC address"""
-        mac = hex(mac).split('x')[-1].upper()
-        mac = mac.zfill(12)
-        mac = ':'.join(mac[i: i + 2] for i in range(0, 12, 2))
-        return mac
-
-    @property
-    def STRING(self):
-        return self._STR_REPR
-
-    @STRING.setter
-    def STRING(self, value):
-        self._STR_REPR = value
-        self._INT_REPR = self._mac2int(value)
-
-    @property
-    def INTEGER(self):
-        return self._INT_REPR
-
-    @INTEGER.setter
-    def INTEGER(self, value):
-        self._INT_REPR = value
-        self._STR_REPR = self._int2mac(value)
-
-    def __int__(self):
-        return self.INTEGER
-
-    def __str__(self):
-        return self.STRING
-
-    def __iadd__(self, other):
-        self.INTEGER += other
-
-    def __isub__(self, other):
-        self.INTEGER -= other
-
-    def __eq__(self, other):
-        return self.INTEGER == other.INTEGER
-
-    def __ne__(self, other):
-        return self.INTEGER != other.INTEGER
-
-    def __lt__(self, other):
-        return self.INTEGER < other.INTEGER
-
-    def __gt__(self, other):
-        return self.INTEGER > other.INTEGER
-
-    def __repr__(self):
-        return f'NetworkAddress(string={self._STR_REPR}, integer={self._INT_REPR})'
-
-from src.wps.modern_vendors import ModernVendorPins
+"""
+WPS PIN generator and utilities
+"""
+from ..utils.network import NetworkAddress
+from .modern_vendors import ModernVendorPins
 
 class WPSpin:
     """WPS pin generator."""

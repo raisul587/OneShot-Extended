@@ -1,0 +1,3 @@
+"""
+OneShot-Extended main package
+"""
