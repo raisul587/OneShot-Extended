@@ -8,6 +8,9 @@ import tempfile
 # Import interface control functions
 from .interface import ifaceCtl, getInterface, checkInterface
 
+# Import system utilities
+from .system import isAndroid, getAndroidArch, checkRoot, checkDependencies
+
 def die(msg: str):
     """Print error message and exit program.
     
@@ -38,7 +41,17 @@ TEMP_DIR = tempfile.gettempdir()
 # Debug mode
 DEBUG = False  # Can be set via command line arguments
 
-# Export interface functions
-__all__ = ['ifaceCtl', 'getInterface', 'checkInterface', 
-           'REPORTS_DIR', 'SESSIONS_DIR', 'PIXIEWPS_DIR', 'HANDSHAKES_DIR',
-           'DATA_DIR', 'TEMP_DIR', 'DEBUG']
+# Export all utility functions
+__all__ = [
+    # Interface functions
+    'ifaceCtl', 'getInterface', 'checkInterface',
+    # System functions
+    'isAndroid', 'getAndroidArch', 'checkRoot', 'checkDependencies',
+    # Error handling
+    'die',
+    # Directory constants
+    'REPORTS_DIR', 'SESSIONS_DIR', 'PIXIEWPS_DIR', 'HANDSHAKES_DIR',
+    'DATA_DIR', 'TEMP_DIR',
+    # Debug flag
+    'DEBUG'
+]
