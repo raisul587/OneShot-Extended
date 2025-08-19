@@ -244,6 +244,9 @@ N301RT
 Archer C2
 Archer C20i
 Archer C5
+Archer C6
+Archer C6U
+Archer C20 1.0
 TD-W8951ND
 TD-W8960N
 TL-WA701ND
